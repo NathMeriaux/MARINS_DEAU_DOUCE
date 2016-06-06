@@ -1,0 +1,11 @@
+<h1><%= @boat.name %> is currently available during the following periods:</h1>
+
+<ul>
+  <% @availabilities.each do |av| %>
+    <li>
+      <%= av.start_date %> - <%= av.end_date %>
+      <%= link_to 'Edit', edit_boat_availability_path(@boat, @availability) %>
+      <%= link_to av, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    </li>
+</ul>
+  <%= link_to 'Add availability', new_boat_availability_path(@boat, @availability) %>
