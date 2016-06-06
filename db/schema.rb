@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606135826) do
+ActiveRecord::Schema.define(version: 20160606140302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(version: 20160606135826) do
   end
 
   add_index "boats", ["user_id"], name: "index_boats_on_user_id", using: :btree
+
+  create_table "bookings", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "status"
+    t.integer  "review_rating"
+    t.text     "review_content"
+    t.integer  "user_id"
+    t.integer  "boat_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "bookings", ["boat_id"], name: "index_bookings_on_boat_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -51,4 +66,6 @@ ActiveRecord::Schema.define(version: 20160606135826) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "boats", "users"
+  add_foreign_key "bookings", "boats"
+  add_foreign_key "bookings", "users"
 end
