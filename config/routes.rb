@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :boats do
     resources :availabilities
     resources :bookings
-  
+
+  get '/boats/index_owner', to: 'boats#index_owner'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,7 @@
+<% @boats.each do |boat| %>
+  <%= boat.name %>
+  <%= boat.location %>
+  <%= boat.capacity %>
+<% end %>
+
+<%= link_to "Add a boat", new_boat_path %>
