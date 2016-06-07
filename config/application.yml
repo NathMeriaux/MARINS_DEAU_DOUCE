@@ -13,3 +13,5 @@
 development:
   FB_ID: "1008285839291918"
   FB_SECRET: "0cf728c163932c6e017f6bec8b03f388"
+
+CLOUDINARY_URL: "cloudinary://492665496851842:jvaQlG7g9rk5w_tRrPD-YDSo-qo@daxpheqp1"
