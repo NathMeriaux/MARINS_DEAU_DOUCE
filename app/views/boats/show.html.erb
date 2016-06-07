@@ -27,7 +27,7 @@
 <% if current_user.id == @boat.user_id %>
 <%= link_to "Edit my boat", edit_boat_path(@boat), class: "btn btn-primary" %>
 <%= link_to "Add availability", new_boat_availability_path(@boat), class: "btn btn-primary" %>
-<%= link_to 'Destroy', boat_path(@boat),
+<%= link_to 'Delete this boat', boat_path(@boat),
     data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-danger" %>
 <% end %>
 <br>
