@@ -3,11 +3,17 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :boats do
+    # collection do
+    #   get 'index_owner'
+    # end
+    collection do
+      get 'index_all'
+    end
     resources :availabilities
     resources :bookings
-
-  get '/boats/index_owner', to: 'boats#index_owner'
   end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

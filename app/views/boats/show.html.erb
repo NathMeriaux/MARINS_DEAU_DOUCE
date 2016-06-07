@@ -1,0 +1,13 @@
+<h1>Boat details</h1>
+
+<%= @boat.name %>
+<%= @boat.location%>
+<%= @boat.capacity%>
+<% if current_user.id = @boat.user_id %>
+<%= link_to "Edit my boat", edit_boat_path(@boat) %>
+<% end %>
+<%= link_to 'Destroy', boat_path(@boat),
+    data: { confirm: 'Are you sure?' }, method: :delete %>
+
+<%= link_to "Return to list", boats_path %>
+
