@@ -1,5 +1,5 @@
 class BoatsController < ApplicationController
-
+  before_action :set_boat, only: [:edit, :show, :destroy]
 
   def new
     @boat = Boat.new
@@ -25,35 +25,26 @@ class BoatsController < ApplicationController
   end
 
   def edit
-    @boat = Boat.find(params[:id])
   end
 
   def show
-    @boat = Boat.find(params[:id])
   end
 
   def update
     boat = current_user.boats.find(params[:id])
-    boat.update!(boat_params)
-    redirect_to boat
+    if boat.update!(boat_params)
+      redirect_to boat
+    else
+      flash[:notice] = "Boat not updated!"
+    end
   end
 
-  # def update
-  #  @boat = Boat.find(params[:id])
-
-  #    if @boat.update_attributes(boat_param)
-  #       redirect_to :action => 'show', :id => @boat
-  #    else
-  #       @subjects = Subject.all
-  #       render :action => 'edit'
-  #    end
-
-  # end
-
   def destroy
-    @boat = Boat.find(params[:id])
-    @boat.destroy
-    redirect_to boats_path
+    if @boat.destroy
+      redirect_to boats_path
+    else
+      flash[:notice] = "Boat not deleted!"
+    end
   end
 
 private
@@ -62,6 +53,8 @@ private
     params.require(:boat).permit(:name, :location, :capacity, :boat_picture)
   end
 
-
+  def set_boat
+    @boat = Boat.find(params[:id])
+  end
 
 end
