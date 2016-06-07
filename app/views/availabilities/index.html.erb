@@ -7,5 +7,6 @@
       <%= link_to 'Edit', edit_boat_availability_path(@boat, @availability) %>
       <%= link_to av, method: :delete, data: { confirm: 'Are you sure?' } do %>
     </li>
+  <% end %>
 </ul>
   <%= link_to 'Add availability', new_boat_availability_path(@boat, @availability) %>
