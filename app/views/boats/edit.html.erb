@@ -1,0 +1,12 @@
+<h1>Edit Boat Detail</h1>
+
+<%= form_for @boat, :url =>{:action => "update", :id =>@boat} do |f| %>
+
+<p>Name: <%= f.text_field 'name' %></p>
+<p>Location: <%= f.text_field  'location' %></p>
+<p>Capacity:<%= f.text_area 'capacity' %></p>
+<%= f.submit "Save changes" %>
+<% end %>
+
+
+<%= link_to 'Back', boats_path(@boat) %>
