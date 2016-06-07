@@ -15,6 +15,13 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = current_user.bookings.build(booking_params)
+    @booking.user_id = current_user.id if current_user
+    if @booking.save
+      redirect_to booking_path
+    else
+      flash[:notice] = "booking not created!"
+    end
   end
 
   def show
@@ -24,6 +31,12 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking = current_user.bookings.find(params[:id])
+    if boooking.update!(booking_params)
+      redirect_to booking
+    else
+      flash[:notice] = "Booking not updated!"
+    end
   end
 
   private
