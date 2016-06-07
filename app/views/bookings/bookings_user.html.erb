@@ -1,8 +1,28 @@
 <h1>My bookings as an owner</h1>
-<% if @bookings_owners == nil %>
-  <%= "You don't have any reservations as an owner" %>
+<% if @boats == nil %>
+  <%= "You don't have any boats as an owner" %>
+<% else %>
+<% @boats.each do |boat| %>
+  <% boat.bookings.each do |booking| %>
+      id<%= booking.id %><br>
+      start_date<%= booking.start_date %><br>
+      end_date <%= booking.end_date %><br>
+      status<%= booking.status %><br>
+      review_rating <%= booking.review_rating %><br>
+      review_content <%= booking.review_content %><br>
+      user_id <%= booking.user_id %><br>
+      boat_id <%= booking.boat_id %><br>
+      ------------------------- <br>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <h1>My bookings as a user</h1>
+  <% if @bookings_users == nil %>
+    <%= "You don't have any reservations as an owner" %>
   <% else %>
-  <% @bookings_owners.each do |booking| %>
+    <% @bookings_users.each do |booking| %>
+    id<%= booking.id %><br>
     start_date <%= booking.start_date %><br>
     end_date <%= booking.end_date %><br>
     status<%= booking.status %><br>
@@ -11,22 +31,5 @@
     user_id <%= booking.user_id %><br>
     boat_id <%= booking.boat_id %><br>
     ------------------------- <br>
+    <% end %>
   <% end %>
-<% end %>
-
-
-<h1>My bookings as a user</h1>
-<% if @bookings_users == nil %>
-  <%= "You don't have any reservations as an owner" %>
-  <% else %>
-  <% @bookings_users.each do |booking| %>
-    start_date <%= booking.start_date %><br>
-    end_date <%= booking.end_date %><br>
-    status<%= booking.status %><br>
-    review_rating <%= booking.review_rating %><br>
-    review_content <%= booking.review_content %><br>
-    user_id <%= booking.user_id %><br>
-    boat_id <%= booking.boat_id %><br>
-    ------------------------- <br>
-  <% end %>
-<% end %>

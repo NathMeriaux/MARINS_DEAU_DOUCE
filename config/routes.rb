@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # end
 
   get '/bookings/', to: 'bookings#bookings_user'
+  get '/booking/:id', to: 'bookings#show'
 
   resources :boats do
      collection do
