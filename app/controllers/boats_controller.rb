@@ -8,6 +8,12 @@ class BoatsController < ApplicationController
 
   def index_all
     @boats = Boat.all
+    if not params[:location].blank?
+      @boats = @boats.where("location LIKE ?", "%#{params[:location]}%")
+    end
+    if not params[:capacity].blank?
+      @boats = @boats.where("capacity = ?", params[:capacity])
+    end
   end
 
   def index
@@ -58,5 +64,4 @@ private
   def set_boat
     @boat = Boat.find(params[:id])
   end
-
 end
