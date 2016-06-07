@@ -1,5 +1,5 @@
 <h1>My bookings as an owner</h1>
-<% if @boats == nil %>
+<% if @boats == [] %>
   <%= "You don't have any boats as an owner" %>
 <% else %>
 <% @boats.each do |boat| %>
@@ -18,7 +18,7 @@
   <% end %>
 
   <h1>My bookings as a user</h1>
-  <% if @bookings_users == nil %>
+  <% if @bookings_users == [] %>
     <%= "You don't have any reservations as an owner" %>
   <% else %>
     <% @bookings_users.each do |booking| %>
