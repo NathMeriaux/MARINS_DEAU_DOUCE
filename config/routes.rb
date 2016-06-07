@@ -11,4 +11,7 @@ Rails.application.routes.draw do
     resources :bookings
   end
 
+  get '/bookings/', to: 'bookings#bookings_user'
+  get '/booking/:id', to: 'bookings#show'
+
 end
