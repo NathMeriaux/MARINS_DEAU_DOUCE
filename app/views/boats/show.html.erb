@@ -3,7 +3,7 @@
 <%= @boat.name %>
 <%= @boat.location%>
 <%= @boat.capacity%>
-<% if current_user.id = @boat.user_id %>
+<% if current_user.id == @boat.user_id %>
 <%= link_to "Edit my boat", edit_boat_path(@boat) %>
 <% end %>
 <%= link_to 'Destroy', boat_path(@boat),
