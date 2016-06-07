@@ -12,7 +12,7 @@ class AvailabilitiesController < ApplicationController
   def create
     @availability = @boat.availabilities.build(availability_params)
     if @availability.save
-      redirect_to boat_availabilities_path(@boat)
+      redirect_to boat_path(@boat)
     else
       flash[:alert] = "We could not save this availability."
     end
@@ -25,7 +25,7 @@ class AvailabilitiesController < ApplicationController
   def update
     @availability = @boat.availabilities.find(params[:id])
     if @availability.update_attributes(availability_params)
-      redirect_to boat_availabilities_path(@boat)
+      redirect_to boat_path(@boat)
     else
       flash[:alert] = "We could not update this availability."
     end
@@ -34,7 +34,7 @@ class AvailabilitiesController < ApplicationController
   def destroy
     @availability = Availability.find(params[:id])
     @availability.destroy
-    redirect_to boat_availabilities_path(@boat)
+    redirect_to boat_path(@boat)
   end
 
   private

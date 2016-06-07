@@ -28,6 +28,7 @@ class BoatsController < ApplicationController
   end
 
   def show
+    @availabilities = @boat.availabilities
   end
 
   def update
