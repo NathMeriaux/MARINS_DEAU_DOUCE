@@ -1,10 +1,16 @@
 <h1>All Boats</h1>
+<form action="/boats/index_all" class="form-inline">
+  <input name="start_date" type="date" class="form-control input-lg" placeholder="checkin">
+  <input name="end_date" type="date" class="form-control input-lg" placeholder="checkout">
+  <input name="location" type="text" class="form-control input-lg" placeholder="location">
+  <input name="capacity" type="integer" class="form-control input-lg">
+  <input type="submit" class="btn btn-primary btn-lg" value="Search">
+</form>
+
 <% @boats.each do |boat| %>
-  <%= link_to boat.name, boat_path(boat)%>
-  <%= boat.location %>
-  <%= boat.capacity %>
+  <%= link_to boat.name, boat_path(boat)%>,
+  location: <%= boat.location %>,
+  capacity: <%= boat.capacity %><br>
 <% end %>
 
-
 <%= link_to "Add a boat", new_boat_path %>
-
