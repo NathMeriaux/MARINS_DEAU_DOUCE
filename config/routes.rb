@@ -3,11 +3,22 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  # resources :users do
+  #   collection do
+  #     get 'bookings_user'
+  #   end
+  # end
+
+  get '/bookings/', to: 'bookings#bookings_user'
 
   resources :boats do
-    resources :availabilities
-    resources :bookings
+     collection do
+       get 'index_owner'
+     end
+     resources :availabilities
+     resources :bookings
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

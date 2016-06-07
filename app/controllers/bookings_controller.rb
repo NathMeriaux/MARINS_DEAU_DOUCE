@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
 
   def bookings_user
     @bookings_users = current_user.bookings
-    @bookings_owners = current_user.boats.bookings
+    # @bookings_owners = current_user.boats.bookings
   end
 
   def new
