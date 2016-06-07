@@ -1,0 +1,21 @@
+<h1>My bookins as an owner</h1>
+<% @bookings_owners.each do |booking| %>
+<%= booking.start_date %><br>
+<%= booking.end_date %><br>
+<%= booking.status %><br>
+<%= booking.review_rating %><br>
+<%= booking.review_content %><br>
+<%= booking.user_id %><br>
+<%= booking.boat_id %><br>
+<% end %>
+
+<h1>My bookings as a user</h1>
+<% @bookings_users.each do |booking| %>
+<%= booking.start_date %><br>
+<%= booking.end_date %><br>
+<%= booking.status %><br>
+<%= booking.review_rating %><br>
+<%= booking.review_content %><br>
+<%= booking.user_id %><br>
+<%= booking.boat_id %><br>
+<% end %>
