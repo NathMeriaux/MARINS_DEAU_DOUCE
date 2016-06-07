@@ -14,7 +14,7 @@ class AvailabilitiesController < ApplicationController
     if @availability.save
       redirect_to boat_availabilities_path(@boat)
     else
-      flash[:notice] = "We could not save this availability."
+      flash[:alert] = "We could not save this availability."
     end
   end
 
@@ -27,7 +27,7 @@ class AvailabilitiesController < ApplicationController
     if @availability.update_attributes(availability_params)
       redirect_to boat_availabilities_path(@boat)
     else
-      flash[:notice] = "We could not update this availability."
+      flash[:alert] = "We could not update this availability."
     end
   end
 
