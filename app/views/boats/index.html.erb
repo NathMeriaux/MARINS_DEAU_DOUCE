@@ -1,11 +1,15 @@
-<h1>MY Boats</h1>
-<% @boats.each do |boat| %>
-<%= link_to boat.name, boat_path(boat)%>
+<h1>My Boats</h1>
 
-  <%= boat.location %>
-  <%= boat.capacity %>
-<% end %>
-
-<%= link_to "Add a boat", new_boat_path %>
+<ul>
+  <% @boats.each do |boat| %>
+    <li> <%= link_to boat.name, boat_path(boat)%> </li>
+      <ul>
+        <li> Location: <%= boat.location %> </li>
+        <li> Capacity: <%= boat.capacity %> persons</li>
+      </ul>
+  <% end %>
+</ul>
+<br>
+<%= link_to "Add a boat", new_boat_path, class:"btn btn-primary" %>
 
 

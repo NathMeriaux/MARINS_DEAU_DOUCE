@@ -1,13 +1,39 @@
 <h1>Boat details</h1>
 
-<%= @boat.name %>
-<%= @boat.location%>
-<%= @boat.capacity%>
+<ul>
+  <li> Name: <%= @boat.name %> </li>
+  <li> Location: <%= @boat.location%> </li>
+  <li> Capacity: <%= @boat.capacity%> persons </li>
+  <li>
+      <% if @availabilities == [] %>
+        This boat has no available period
+      <% else %>
+        This boat is available during the following periods:
+        <ul>
+        <% @availabilities.each do |av| %>
+          <li>
+            <%= av.start_date %> - <%= av.end_date %>
+            <%= link_to edit_boat_availability_path(@boat, av), method: :edit do %>
+              <i class="fa fa-pencil-square-o"></i>
+            <% end %>
+            <%= link_to boat_availability_path(@boat, av),
+            method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fa fa-trash-o"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </li>
+</ul>
+<br>
 <% if current_user.id == @boat.user_id %>
-<%= link_to "Edit my boat", edit_boat_path(@boat) %>
+<%= link_to "Edit my boat", edit_boat_path(@boat), class: "btn btn-primary" %>
+<%= link_to "Add availability", new_boat_availability_path(@boat), class: "btn btn-primary" %>
+<%= link_to 'Delete this boat', boat_path(@boat),
+    data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-danger" %>
 <% end %>
-<%= link_to 'Destroy', boat_path(@boat),
-    data: { confirm: 'Are you sure?' }, method: :delete %>
-
-<%= link_to "Return to list", boats_path %>
+<br>
+<br>
+<%= link_to "<< Return to list", boats_path, class:"btn btn-primary" %>
 
