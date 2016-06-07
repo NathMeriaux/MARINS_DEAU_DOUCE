@@ -4,9 +4,11 @@
   <% @availabilities.each do |av| %>
     <li>
       <%= av.start_date %> - <%= av.end_date %>
-      <%= link_to 'Edit', edit_boat_availability_path(@boat, @availability) %>
-      <%= link_to av, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <%= link_to 'Edit', edit_boat_availability_path(@boat, av) %>
+      <%= link_to "Delete", boat_availability_path(@boat, av),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
     </li>
   <% end %>
 </ul>
-  <%= link_to 'Add availability', new_boat_availability_path(@boat, @availability) %>
+  <%= link_to 'Add availability', new_boat_availability_path %>
