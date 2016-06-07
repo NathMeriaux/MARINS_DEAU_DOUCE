@@ -19,7 +19,7 @@ end
 10.times do
   user = User.all.sample
   boat = Boat.new(
-    name: Faker::Company.catch_phrase,
+    name: Faker::Hipster.word,
     location: Faker::Address.city,
     capacity: (0..5).to_a.sample,
     user_id: user.id
