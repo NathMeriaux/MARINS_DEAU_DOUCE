@@ -5,18 +5,21 @@
   <li> Location: <%= @boat.location%> </li>
   <li> Capacity: <%= @boat.capacity%> persons </li>
   <li>
-      <% if @availabilities == nil %>
-        This boat is not available
+      <% if @availabilities == [] %>
+        This boat has no available period
       <% else %>
         This boat is available during the following periods:
         <ul>
         <% @availabilities.each do |av| %>
           <li>
             <%= av.start_date %> - <%= av.end_date %>
-            <%= link_to 'Edit', edit_boat_availability_path(@boat, av) %>
-            <%= link_to "Delete", boat_availability_path(@boat, av),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+            <%= link_to edit_boat_availability_path(@boat, av), method: :edit do %>
+              <i class="fa fa-pencil-square-o"></i>
+            <% end %>
+            <%= link_to boat_availability_path(@boat, av),
+            method: :delete, data: { confirm: "Are you sure?" } do %>
+              <i class="fa fa-trash-o"></i>
+            <% end %>
           </li>
         <% end %>
       </ul>
