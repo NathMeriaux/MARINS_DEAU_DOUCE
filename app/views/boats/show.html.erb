@@ -13,12 +13,14 @@
         <% @availabilities.each do |av| %>
           <li>
             <%= av.start_date %> - <%= av.end_date %>
-            <%= link_to edit_boat_availability_path(@boat, av), method: :edit do %>
-              <i class="fa fa-pencil-square-o"></i>
-            <% end %>
-            <%= link_to boat_availability_path(@boat, av),
-            method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fa fa-trash-o"></i>
+            <% if current_user && current_user.id == @boat.user_id %>
+              <%= link_to edit_boat_availability_path(@boat, av), method: :edit do %>
+                <i class="fa fa-pencil-square-o"></i>
+              <% end %>
+              <%= link_to boat_availability_path(@boat, av),
+              method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fa fa-trash-o"></i>
+              <% end %>
             <% end %>
           </li>
         <% end %>
@@ -27,13 +29,18 @@
   </li>
 </ul>
 <br>
-<% if current_user.id == @boat.user_id %>
-<%= link_to "Edit my boat", edit_boat_path(@boat), class: "btn btn-primary" %>
-<%= link_to "Add availability", new_boat_availability_path(@boat), class: "btn btn-primary" %>
-<%= link_to 'Delete this boat', boat_path(@boat),
-    data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-danger" %>
+<% if current_user && current_user.id == @boat.user_id %>
+  <%= link_to "Edit my boat", edit_boat_path(@boat), class: "btn btn-primary" %>
+  <%= link_to "Add availability", new_boat_availability_path(@boat), class: "btn btn-primary" %>
+  <%= link_to 'Delete this boat', boat_path(@boat),
+      data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-danger" %>
 <% end %>
 <br>
 <br>
-<%= link_to "<< Return to list", boats_path, class:"btn btn-primary" %>
+
+<% if current_user && current_user.id == @boat.user_id %>
+  <%= link_to "<< Return to my boats", boats_path, class:"btn btn-primary" %>
+<% else %>
+  <%= link_to "<< Return to all boats", index_all_boats_path, class:"btn btn-primary" %>
+<% end %>
 

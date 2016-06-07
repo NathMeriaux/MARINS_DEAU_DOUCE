@@ -1,4 +1,5 @@
 class BoatsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index_all, :show]
   before_action :set_boat, only: [:edit, :show, :destroy]
 
   def new
@@ -19,7 +20,7 @@ class BoatsController < ApplicationController
     if @boat.save
       redirect_to boats_path
     else
-      flash[:notice] = "Boat not created!"
+      flash[:alert] = "Boat not created!"
     end
 
   end
