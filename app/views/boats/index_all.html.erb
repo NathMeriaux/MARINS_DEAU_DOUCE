@@ -8,9 +8,10 @@
 </form>
 
 <% @boats.each do |boat| %>
-  <%= link_to boat.name, boat_path(boat)%>,
-  location: <%= boat.location %>,
-  capacity: <%= boat.capacity %><br>
+  <%= link_to boat.name, boat_path(boat)%>
+  location: <%= boat.location %>
+  capacity: <%= boat.capacity %>
+  price/night: <%= boat.price %>
 <% end %>
 
 <%= link_to "Add a boat", new_boat_path %>
