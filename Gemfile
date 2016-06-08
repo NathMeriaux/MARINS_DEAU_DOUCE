@@ -10,6 +10,7 @@ gem 'devise'
 gem 'redis'
 gem 'coffee-rails'
 gem 'gmaps4rails'
+gem "geocoder"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'

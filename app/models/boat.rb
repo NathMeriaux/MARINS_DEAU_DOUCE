@@ -3,4 +3,7 @@ class Boat < ActiveRecord::Base
   has_many :bookings
   has_many :availabilities
   validates_presence_of :name, :location, :capacity
+
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
 end
