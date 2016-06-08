@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path
     else
-      flash[:notice] = "booking not created!"
+      flash[:alert] = "booking not created!"
     end
   end
 
@@ -35,7 +35,7 @@ class BookingsController < ApplicationController
     if boooking.update!(booking_params)
       redirect_to booking
     else
-      flash[:notice] = "Booking not updated!"
+      flash[:alert] = "Booking not updated!"
     end
   end
 
