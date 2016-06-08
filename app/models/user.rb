@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
 
+  mount_uploader :profile_picture, PhotoUploader
   has_many :boats, dependent: :destroy
   has_many :bookings
 
