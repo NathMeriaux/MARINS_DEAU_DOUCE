@@ -29,6 +29,7 @@
     <% end %>
   </li>
 </ul>
+<%= cl_image_tag @boat.boat_picture, height: 300, width: 400, crop: :fill %>
 <br>
 <% if current_user && current_user.id == @boat.user_id %>
   <%= link_to "Edit my boat", edit_boat_path(@boat), class: "btn btn-primary" %>
