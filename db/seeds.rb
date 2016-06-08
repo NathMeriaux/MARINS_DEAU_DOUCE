@@ -22,7 +22,8 @@ end
     name: Faker::Hipster.word,
     location: Faker::Address.city,
     capacity: (0..5).to_a.sample,
-    user_id: user.id
+    user_id: user.id,
+    price: (50..350).to_a.sample
   )
   boat.save
 end
