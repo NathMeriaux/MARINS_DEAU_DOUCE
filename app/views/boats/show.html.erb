@@ -15,7 +15,7 @@
           <li>
             <%= av.start_date %> - <%= av.end_date %>
             <% if current_user && current_user.id == @boat.user_id %>
-              <%= link_to edit_boat_availability_path(@boat, av), method: :edit do %>
+              <%= link_to edit_boat_availability_path(@boat, av) do %>
                 <i class="fa fa-pencil-square-o"></i>
               <% end %>
               <%= link_to boat_availability_path(@boat, av),
@@ -44,4 +44,3 @@
 <% else %>
   <%= link_to "<< Return to all boats", index_all_boats_path, class:"btn btn-primary" %>
 <% end %>
-
