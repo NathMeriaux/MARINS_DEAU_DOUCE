@@ -1,4 +1,5 @@
 class Boat < ActiveRecord::Base
+  mount_uploader :boat_picture, PhotoUploader
   belongs_to :user
   has_many :bookings
   has_many :availabilities
