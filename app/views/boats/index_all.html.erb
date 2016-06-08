@@ -1,20 +1,34 @@
-<h1>All Boats</h1>
-<form action="/boats/index_all" class="form-inline">
-  <input name="start_date" type="date" class="form-control input-lg" placeholder="checkin">
-  <input name="end_date" type="date" class="form-control input-lg" placeholder="checkout">
-  <input name="location" type="text" class="form-control input-lg" placeholder="location">
-  <input name="capacity" type="integer" class="form-control input-lg">
-  <input type="submit" class="btn btn-primary btn-lg" value="Search">
-</form>
-
-<% @boats.each do |boat| %>
-  <%= link_to boat.name, boat_path(boat)%>
-  location: <%= boat.location %>
-  capacity: <%= boat.capacity %>
-  price/night: <%= boat.price %>
-<% end %>
-
-<%= link_to "Add a boat", new_boat_path %>
+<div class="wrapper-grey padded">
+  <div class="container">
+  <form action="/boats/index_all" class="form-inline">
+    <input name="start_date" type="date" class="form-control input-lg" placeholder="checkin">
+    <input name="end_date" type="date" class="form-control input-lg" placeholder="checkout">
+    <input name="location" type="text" class="form-control input-lg" placeholder="location">
+    <input name="capacity" type="integer" class="form-control input-lg">
+    <input type="submit" class="btn btn-primary btn-lg" value="Search">
+  </form>
+    <h2 class="text-center">My selection</h2>
+    <div class="row">
+      <% @boats.each do |boat| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path boat.boat_picture %>');">
+            <div class="card-category"><%= boat.location %></div>
+            <div class="card-description">
+              <h2><%= link_to boat.name%></h2>
+              <p><%= boat.capacity %> persons</p>
+              <p><%= boat.price %>€/night</p>
+            </div>
+            <%= image_tag boat.user.profile_picture, class:"card-user avatar avatar-large" %>
+            <%= link_to "", boat_path(boat), class:"card-link" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% if current_user && current_user.is_admin %>
+      <%= link_to "Add a boat", new_boat_path, class:"btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
 <div id="map" style="width: 100%; height: 600px;"></div>
 
