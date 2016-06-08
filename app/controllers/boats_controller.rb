@@ -69,6 +69,10 @@ class BoatsController < ApplicationController
 
   def show
     @availabilities = @boat.availabilities
+    @marker_show = Gmaps4rails.build_markers(@boat) do |boat, marker|
+      marker.lat boat.latitude
+      marker.lng boat.longitude
+    end
   end
 
   def update
