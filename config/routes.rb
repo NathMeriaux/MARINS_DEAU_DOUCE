@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
   root to: 'pages#home'
-
-  resources :users, only: [:show, :edit, :update, :destroy]
-
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  resources :users, only: [:show, :edit, :update]
+
 
   resources :boats do
     collection do
