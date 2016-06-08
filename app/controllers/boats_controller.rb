@@ -49,7 +49,7 @@ class BoatsController < ApplicationController
     if boat.update!(boat_params)
       redirect_to boat
     else
-      flash[:notice] = "Boat not updated!"
+      flash[:alert] = "Boat not updated!"
     end
   end
 
@@ -57,14 +57,14 @@ class BoatsController < ApplicationController
     if @boat.destroy
       redirect_to boats_path
     else
-      flash[:notice] = "Boat not deleted!"
+      flash[:alert] = "Boat not deleted!"
     end
   end
 
 private
 
   def boat_params
-    params.require(:boat).permit(:name, :location, :capacity, :boat_picture)
+    params.require(:boat).permit(:name, :location, :capacity, :boat_picture, :price)
   end
 
   def set_boat

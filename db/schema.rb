@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160608094302) do
     t.datetime "updated_at",   null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "price"
   end
 
   add_index "boats", ["user_id"], name: "index_boats_on_user_id", using: :btree
