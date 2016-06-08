@@ -14,6 +14,12 @@ class BoatsController < ApplicationController
     if not params[:capacity].blank?
       @boats = @boats.where("capacity = ?", params[:capacity])
     end
+    
+    #Create markers for gmaps with filtered boats
+    @markers = Gmaps4rails.build_markers(@boats) do |boat, marker|
+      marker.lat boat.latitude
+      marker.lng boat.longitude
+    end
   end
 
   def index
