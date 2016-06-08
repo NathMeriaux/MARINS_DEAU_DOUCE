@@ -14,11 +14,39 @@ class BoatsController < ApplicationController
     if not params[:capacity].blank?
       @boats = @boats.where("capacity = ?", params[:capacity])
     end
+    # 4 conditions:
+      # start_date <= end_date
+      # start_date belongs to an availability
+      # end_date belongs to an availability
+      # start_date_availability_id = end_date.availability_id
+    if (not params[:start_date].blank?) && (not params[:end_date].blank?) && (params[:start_date].to_date < params[:end_date].to_date)
+      check_availability(@boats, params[:start_date].to_date, params[:end_date].to_date)
+    end
     #Create markers for gmaps with filtered boats
     @markers = Gmaps4rails.build_markers(@boats) do |boat, marker|
       marker.lat boat.latitude
       marker.lng boat.longitude
     end
+  end
+
+  def check_availability(boats, start_date, end_date)
+    filtered_boats = []
+    boats.each do |boat|
+      if available(boat, start_date, end_date) > 0
+        filtered_boats << boat
+      end
+    end
+    @boats = filtered_boats
+  end
+
+  def available(boat, start_date, end_date)
+    counter = 0
+    boat.availabilities.each do |availability|
+      if start_date >= availability.start_date && end_date <= availability.end_date
+        counter += 1
+      end
+    end
+    counter
   end
 
   def index
