@@ -10,6 +10,29 @@
   <% end %>
 </ul>
 <br>
-<%= link_to "Add a boat", new_boat_path, class:"btn btn-primary" %>
 
 
+<div class="wrapper-grey padded">
+  <div class="container">
+    <h2 class="text-center">My boats</h2>
+    <div class="row">
+      <% @boats.each do |boat| %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path boat.boat_picture %>');">
+            <div class="card-category"><%= boat.location %></div>
+            <div class="card-description">
+              <h2><%= boat.name %></h2>
+              <p><%= boat.capacity %> persons</p>
+              <p><%= boat.price %>€/night</p>
+            </div>
+            <%= image_tag current_user.profile_picture, class:"card-user avatar avatar-large" %>
+            <%= link_to "#", boat_path(boat), class: "card-link" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= link_to "Add a boat", new_boat_path, class:"btn btn-primary" %>
+
+</div>
