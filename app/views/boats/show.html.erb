@@ -42,8 +42,9 @@
 
 <% if current_user && current_user.id == @boat.user_id %>
   <%= link_to "<< Return to my boats", boats_path, class:"btn btn-primary" %>
-<% else %>
+<% elsif current_user %>
   <%= link_to "Book this boat", new_boat_booking_path(@boat), class:'btn btn-primary' %>
+<% else %>
   <%= link_to "<< Return to all boats", index_all_boats_path, class:"btn" %>
 <% end %>
 

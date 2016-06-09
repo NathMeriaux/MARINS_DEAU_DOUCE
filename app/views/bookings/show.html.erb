@@ -1,2 +1,23 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
+<h1>Your booking</h1>
+<ul>
+  <li> Start date: <%= @booking.start_date%> </li>
+  <li> End date: <%= @booking.end_date%> </li>
+  <% nb_nights = (@booking.end_date - @booking.start_date).to_i%>
+  <li> Total nights: <%= nb_nights %> nights </li>
+  <li> Total price: <%= nb_nights * @booking.boat.price %> </li>
+  <li> Status: <%= @booking.status %> </li>
+</ul>
+
+<h2> Your boat details </h2>
+<%= cl_image_tag @booking.boat.boat_picture, height: 300, width: 400, crop: :fill %>
+<ul>
+  <li> Name: <%= @booking.boat.name %> </li>
+  <li> Location: <%= @booking.boat.location%> </li>
+  <li> Capacity: <%= @booking.boat.capacity%> persons </li>
+  <li> Price: <%= @booking.boat.price%>€/night </li>
+</ul>
+<br>
+
+  <%= link_to "<< My bookings", bookings_path, class:"btn" %>
+
+
