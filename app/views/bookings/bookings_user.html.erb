@@ -19,7 +19,7 @@
 
   <h1>My bookings as a user</h1>
   <% if @bookings_users == [] %>
-    <%= "You don't have any reservations as an owner" %>
+    <%= "You don't have any reservations as a user" %>
   <% else %>
     <% @bookings_users.each do |booking| %>
     id<%= booking.id %><br>

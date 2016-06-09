@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update]
+  before_action :find_boat
 
   def index
     @bookings = Booking.all
@@ -17,8 +18,9 @@ class BookingsController < ApplicationController
   def create
     @booking = current_user.bookings.build(booking_params)
     @booking.user_id = current_user.id if current_user
+    @booking.boat_id = @boat.id
     if @booking.save
-      redirect_to booking_path
+      redirect_to boat_booking_path(@boat, @booking)
     else
       flash[:alert] = "booking not created!"
     end
@@ -43,6 +45,10 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+  end
+
+  def find_boat
+    @boat = Boat.find(params[:boat_id])
   end
 
   def booking_params
