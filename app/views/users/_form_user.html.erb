@@ -1,0 +1,10 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :profile_picture %>
+  <%= f.input :profile_picture_cache, as: :hidden %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <div class="text-center">
+  <%= f.button :submit %></div>
+<% end %>
