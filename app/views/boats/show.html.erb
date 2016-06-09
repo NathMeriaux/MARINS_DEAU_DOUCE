@@ -1,36 +1,51 @@
-<h1>Boat details</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <h1> <%= @boat.name %> </h1>
 
-<ul>
-  <li> Name: <%= @boat.name %> </li>
-  <li> Location: <%= @boat.location%> </li>
-  <li> Capacity: <%= @boat.capacity%> persons </li>
-  <li> Price: <%= @boat.price%>€/night </li>
-  <li>
-      <% if @availabilities == [] %>
-        This boat has no available period
-      <% else %>
-        This boat is available during the following periods:
-        <ul>
-        <% @availabilities.each do |av| %>
-          <li>
-            <%= av.start_date %> - <%= av.end_date %>
-            <% if current_user && current_user.id == @boat.user_id %>
-              <%= link_to edit_boat_availability_path(@boat, av) do %>
-                <i class="fa fa-pencil-square-o"></i>
+      <%= cl_image_tag @boat.boat_picture, height: 300, width: 400, crop: :fill %>
+
+      <ul>
+        <li> Location: <%= @boat.location%> </li>
+        <li> Capacity: <%= @boat.capacity%> persons </li>
+        <li> Price: <%= @boat.price%>€/night </li>
+        <li>
+            <% if @availabilities == [] %>
+              This boat has no available period
+            <% else %>
+              This boat is available during the following periods:
+              <ul>
+              <% @availabilities.each do |av| %>
+                <li>
+                  <%= av.start_date %> - <%= av.end_date %>
+                  <% if current_user && current_user.id == @boat.user_id %>
+                    <%= link_to edit_boat_availability_path(@boat, av) do %>
+                      <i class="fa fa-pencil-square-o"></i>
+                    <% end %>
+                    <%= link_to boat_availability_path(@boat, av),
+                    method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <i class="fa fa-trash-o"></i>
+                    <% end %>
+                  <% end %>
+                </li>
               <% end %>
-              <%= link_to boat_availability_path(@boat, av),
-              method: :delete, data: { confirm: "Are you sure?" } do %>
-                <i class="fa fa-trash-o"></i>
-              <% end %>
-            <% end %>
-          </li>
-        <% end %>
+            </ul>
+          <% end %>
+        </li>
       </ul>
-    <% end %>
-  </li>
-</ul>
-<%= cl_image_tag @boat.boat_picture, height: 300, width: 400, crop: :fill %>
+    </div>
+    <div class="col-xs-12 col-sm-6 book-form">
+      <h3> Spend one or more nights on board</h2>
+      <% unless current_user && current_user.id == @boat.user_id %>
+        <%= render 'form_booking' %>
+      <% end %>
+    </div>
+  </div>
+</div>
 <br>
+
+
+
 <% if current_user && current_user.id == @boat.user_id %>
   <%= link_to "Edit my boat", edit_boat_path(@boat), class: "btn btn-primary" %>
   <%= link_to "Add availability", new_boat_availability_path(@boat), class: "btn btn-primary" %>
@@ -42,8 +57,6 @@
 
 <% if current_user && current_user.id == @boat.user_id %>
   <%= link_to "<< Return to my boats", boats_path, class:"btn btn-primary" %>
-<% elsif current_user %>
-  <%= link_to "Book this boat", new_boat_booking_path(@boat), class:'btn btn-primary' %>
 <% else %>
   <%= link_to "<< Return to all boats", index_all_boats_path, class:"btn" %>
 <% end %>

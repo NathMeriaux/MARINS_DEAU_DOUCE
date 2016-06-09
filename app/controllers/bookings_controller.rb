@@ -12,7 +12,6 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new
   end
 
   def check_create

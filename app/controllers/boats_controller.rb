@@ -12,7 +12,7 @@ class BoatsController < ApplicationController
       @boats = @boats.where("location LIKE ?", "%#{params[:location]}%")
     end
     if not params[:capacity].blank?
-      @boats = @boats.where("capacity = ?", params[:capacity])
+      @boats = @boats.where("capacity >= ?", params[:capacity])
     end
     # 4 conditions:
       # start_date <= end_date
@@ -75,6 +75,7 @@ class BoatsController < ApplicationController
       marker.lat boat.latitude
       marker.lng boat.longitude
     end
+    @booking = Booking.new
   end
 
   def update
