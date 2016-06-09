@@ -1,0 +1,16 @@
+<% if @user.first_name != nil %>
+Hey <%= @user.first_name %>
+<% else %>
+Hey
+<% end %>
+
+You just created a boat :
+
+Boat name : <%= @boat.name %>
+Boat price : <%= @boat.price %>
+Boat location : <%= @boat.location %>
+Boat capacity : <%= @boat.capacity %>
+
+Thanks for sailing with us!
+
+Alexandra, Marine and Nathalie.
