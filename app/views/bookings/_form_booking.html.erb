@@ -1,0 +1,6 @@
+<%= simple_form_for([@boat, @booking]) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.button :submit %>
+<% end %>
