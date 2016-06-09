@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
 
   def update
     @booking = current_user.bookings.find(params[:id])
-    if boooking.update!(booking_params)
+    if booking.update!(booking_params)
       redirect_to booking
     else
       flash[:alert] = "Booking not updated!"
