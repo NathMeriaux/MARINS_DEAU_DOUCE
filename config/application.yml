@@ -19,3 +19,5 @@ CLOUDINARY_URL: "cloudinary://492665496851842:jvaQlG7g9rk5w_tRrPD-YDSo-qo@daxphe
 production:
   FB_ID: "1213637228655141"
   FB_SECRET: "a44af67c139ec705477e867c7ebd7293"
+  HOST: 'sheltered-sands-48643.herokuapp.com'
+  POSTMARK_API_TOKEN: '01a3860e-0799-43a5-9d12-1d03a6f418aa'
