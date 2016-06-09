@@ -1,0 +1,25 @@
+.form-control.opacity {
+  opacity: 0.7;
+  border-radius: 15px;
+  background-colour: gray-light;
+}
+
+.btn.opacity {
+  opacity: 0.8;
+  border-radius: 15px;
+}
+
+.form-control.over:hover {
+    background-color: white;
+    color: #5F5E5F;
+    border: 3px solid #5F5E5F;
+
+}
+
+.form-control.shadow {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.form-control.shadow:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
