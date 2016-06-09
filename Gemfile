@@ -10,7 +10,8 @@ gem 'devise'
 gem 'redis'
 gem 'coffee-rails'
 gem 'gmaps4rails'
-gem "geocoder"
+gem 'geocoder'
+gem 'postmark-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'
@@ -43,3 +44,5 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+gem "letter_opener", group: :development

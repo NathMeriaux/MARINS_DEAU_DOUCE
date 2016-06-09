@@ -15,6 +15,9 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config.action_mailer.delivery_method = :postmark
+config.action_mailer.postmark_settings = { :api_token => "01a3860e-0799-43a5-9d12-1d03a6f418aa" }
+
 module MARINSDeauDouce
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

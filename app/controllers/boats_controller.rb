@@ -54,9 +54,11 @@ class BoatsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @boat = current_user.boats.build(boat_params)
     @boat.user_id = current_user.id if current_user
     if @boat.save
+      BoatMailer.creation_confirmation(@boat, @user).deliver_now
       redirect_to boats_path
     else
       flash[:alert] = "Boat not created!"
