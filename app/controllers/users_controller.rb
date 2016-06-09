@@ -8,9 +8,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = current_user.find(user_params)
-    if user.update_attributes(user_params)
-      redirect_to user
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to user_path
     else
       flash[:alert] = "Profile not updated!"
     end
