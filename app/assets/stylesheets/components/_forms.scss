@@ -1,0 +1,32 @@
+.form-login {
+ padding: 20px;
+ margin: 40px;
+ background-color: $gray-lighter;
+ border-radius: 5px;
+ position: relative;
+  & h2 {
+    text-align: center;
+  }
+  & .btn-login {
+  text-align: center;
+  margin-bottom: 20px;
+  }
+}
+
+.forgot-password {
+  font-style: italic;
+  margin-bottom: 20px;
+  position: absolute;
+  right: 20px;
+  bottom: 175px;
+  }
+
+.facebook {
+  background-color: #3B5998;
+  border-radius: 2px;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  color: white;
+}
