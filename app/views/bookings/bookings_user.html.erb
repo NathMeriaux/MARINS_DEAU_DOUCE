@@ -6,7 +6,7 @@
         <% if @nb_bookings == 0 %>
           <p> You don't have any reservations as an owner <p>
         <% else %>
-          <p> You have <%= nb_bookings %> reservations <p>
+          <p> You have <%= @nb_bookings %> reservations <p>
           <div class="row">
             <% @boats.each do |boat| %>
               <div class="col-xs-12 col-md-12">
