@@ -1,10 +1,10 @@
 <div class="wrapper-grey padded">
   <div class="container">
   <form action="/boats/index_all" class="form-inline">
-    <input name="start_date" type="date" class="form-control input-lg" placeholder="checkin">
-    <input name="end_date" type="date" class="form-control input-lg" placeholder="checkout">
-    <input name="location" type="text" class="form-control input-lg" placeholder="location">
-    <input name="capacity" type="integer" class="form-control input-lg" placeholder="capacity">
+    <input name="start_date" type="date" class="form-control input-lg" value= <%= params[:start_date] %> >
+    <input name="end_date" type="date" class="form-control input-lg" value= <%= params[:end_date] %> >
+    <input name="location" type="text" class="form-control input-lg" value= <%= params[:location] %> >
+    <input name="capacity" type="integer" class="form-control input-lg" value= <%= params[:capacity] %> >
     <input type="submit" class="btn btn-primary btn-lg" value="Search">
   </form>
     <h2 class="text-center">My selection</h2>
