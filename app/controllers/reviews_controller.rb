@@ -8,9 +8,15 @@ class ReviewsController < ApplicationController
   def create
     @review = @boat.reviews.build(reviews_params)
     if @review.save
-      redirect_to boat_path(@boat)
+      respond_to do |format|
+        format.html { redirect_to boat_path(@boat) }
+        format.js
+      end
     else
-      flash[:alert] = "We could not save this review."
+      respond_to do |format|
+        format.html { render 'restaurants/show' }
+        format.js
+      end
     end
   end
 
