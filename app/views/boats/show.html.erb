@@ -61,6 +61,10 @@
   <%= link_to "<< Return to all boats", index_all_boats_path, class:"btn" %>
 <% end %>
 
+  <%= month_calendar events: @ranges do |date, range| %>
+    <%= date %>
+  <% end %>
+
 <div id="map_show" style="width: 100%; height: 600px;"></div>
 
 <% content_for(:after_js) do %>
