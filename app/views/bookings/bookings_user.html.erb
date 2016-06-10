@@ -1,29 +1,48 @@
-<h1>My bookings as an owner</h1>
-<% if @boats == [] %>
-  <%= "You don't have any boats as an owner" %>
-<% else %>
-<% @boats.each do |boat| %>
-  <% boat.bookings.each do |booking| %>
-      start_date: <%= booking.start_date %><br>
-      end_date: <%= booking.end_date %><br>
-      status: <%= booking.status %><br>
-      review_rating: <%= booking.review_rating %><br>
-      review_content: <%= booking.review_content %><br>
-      ------------------------- <br>
+<div class="container padded text-center">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 owner">
+      <h1>My bookings as an owner</h1>
+      <% if @boats == [] %>
+        <p> You don't have any reservations as an owner <p>
+      <% else %>
+        <div class="row">
+          <% @boats.each do |boat| %>
+            <div class="col-xs-12 col-md-12">
+              <% boat.bookings.each do |booking| %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path boat.boat_picture %>');">
+                  <div class="card-category"><%= booking.boat.location %></div>
+                  <div class="card-description">
+                    <h2><%= link_to booking.boat.name%></h2>
+                    <p><%= booking.start_date %> - <%= booking.start_date %></p>
+                  </div>
+                  <%= link_to "", boat_path(boat), class:"card-link" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
-  <% end %>
-
-  <h1>My bookings as a user</h1>
-  <% if @bookings_users == [] %>
-    <%= "You don't have any reservations as a user" %>
-  <% else %>
-    <% @bookings_users.each do |booking| %>
-    start_date: <%= booking.start_date %><br>
-    end_date: <%= booking.end_date %><br>
-    status: <%= booking.status %><br>
-    review_rating: <%= booking.review_rating %><br>
-    review_content: <%= booking.review_content %><br>
-    ------------------------- <br>
-    <% end %>
-  <% end %>
+    </div>
+    <div class="col-xs-12 col-md-6 user">
+      <h1>My bookings as a user</h1>
+      <% if @bookings_users == [] %>
+        <p> You don't have any reservations as a user <p>
+      <% else %>
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <% @bookings_users.each do |booking| %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path booking.boat.boat_picture %>');">
+                  <div class="card-category"><%= booking.boat.location %></div>
+                  <div class="card-description">
+                    <h2><%= link_to booking.boat.name%></h2>
+                    <p><%= booking.start_date %> - <%= booking.start_date %></p>
+                  </div>
+                  <%= link_to "", boat_booking_path(booking, booking.boat), class:"card-link" %>
+                </div>
+              <% end %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
