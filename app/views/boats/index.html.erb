@@ -11,7 +11,7 @@
               <p><%= boat.capacity %> persons</p>
               <p><%= boat.price %>€/night</p>
             </div>
-            <%= image_tag current_user.profile_picture, class:"card-user avatar avatar-large" %>
+            <%= show_card_avatar(@user) %>
             <%= link_to "", boat_path(boat), class:"card-link" %>
           </div>
         </div>
