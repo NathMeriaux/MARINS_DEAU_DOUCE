@@ -12,6 +12,8 @@ gem 'coffee-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'postmark-rails'
+gem 'simple_calendar', "~> 2.0"
+
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'

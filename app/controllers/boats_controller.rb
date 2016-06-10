@@ -76,6 +76,12 @@ class BoatsController < ApplicationController
       marker.lng boat.longitude
     end
     @booking = Booking.new
+    @ranges = []
+    @availabilities.each do |av|
+      range(av).each do |a|
+        @ranges << a
+      end
+    end
   end
 
   def update
@@ -95,6 +101,14 @@ class BoatsController < ApplicationController
     end
   end
 
+  def range(availability)
+    range = []
+    (availability.start_date..availability.end_date).each do |date|
+      range << OpenStruct.new(start_time: date)
+    end
+    range
+    #map{ |date| date.strftime('%A, %B %d, %Y') }
+  end
 private
 
   def boat_params

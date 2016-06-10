@@ -3,6 +3,10 @@ class Availability < ActiveRecord::Base
   validates_presence_of :start_date, :end_date
   validate :start_date_before_end_date
 
+  def start_time
+    self.start_date
+  end
+
 private
 
   def start_date_before_end_date
