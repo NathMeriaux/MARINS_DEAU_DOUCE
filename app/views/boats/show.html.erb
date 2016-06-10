@@ -61,17 +61,18 @@
   <%= link_to "<< Return to all boats", index_all_boats_path, class:"btn" %>
 <% end %>
 
-<% if @reviews.nil? %>
-  This boat has no review yet
+<%= render 'form_review' %>
+<% if @reviews == nil %>
+  This boat has no reviews yet...
 <% else %>
   This boat has already been reviewed, check it out:
   <ul>
   <% @reviews.each do |review| %>
     <li>
       <%= review.content %>
-      <% end %>
     </li>
-  <% end %>
+    <% end %>
+<% end %>
 
   <%= month_calendar events: @ranges do |date, range| %>
     <%= date %>

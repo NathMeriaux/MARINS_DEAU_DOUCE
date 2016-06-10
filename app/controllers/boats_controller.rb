@@ -70,6 +70,8 @@ class BoatsController < ApplicationController
   end
 
   def show
+    @reviews = @boat.reviews
+    @review = Review.new
     @availabilities = @boat.availabilities
     @marker_show = Gmaps4rails.build_markers(@boat) do |boat, marker|
       marker.lat boat.latitude
