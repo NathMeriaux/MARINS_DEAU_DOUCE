@@ -9,6 +9,10 @@ class BookingsController < ApplicationController
   def bookings_user
     @bookings_users = current_user.bookings
     @boats = current_user.boats
+    @nb_bookings = 0
+    @boats.each do |boat|
+      @nb_bookings += boat.bookings.size
+    end
   end
 
   def new

@@ -1,11 +1,15 @@
 .owner {
-  border-color: $grey-blue;
-  border-style: solid;
   background-color: $gray-lighter;
+  & h3 {
+    color: $grey-blue;
+    padding-bottom: 15px;
+  }
 }
 
 .user {
-  border-color: $grey-blue;
-  border-style: solid;
   background-color: $gray-lighter;
+  & h3 {
+    color: $grey-blue;
+    padding-bottom: 15px;
+  }
 }

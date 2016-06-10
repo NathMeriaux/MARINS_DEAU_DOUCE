@@ -34,9 +34,9 @@
         </li>
       </ul>
     </div>
+    <% unless current_user && current_user.id == @boat.user_id %>
     <div class="col-xs-12 col-sm-6 book-form">
       <h3> Spend one or more nights on board</h2>
-      <% unless current_user && current_user.id == @boat.user_id %>
         <%= render 'form_booking' %>
       <% end %>
     </div>
