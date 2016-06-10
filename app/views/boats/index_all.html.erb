@@ -1,12 +1,6 @@
 <div class="wrapper-grey padded">
   <div class="container">
-  <form action="/boats/index_all" class="form-inline">
-    <input name="start_date" type="date" class="form-control input-lg" value= <%= params[:start_date] %> >
-    <input name="end_date" type="date" class="form-control input-lg" value= <%= params[:end_date] %> >
-    <input name="location" type="text" class="form-control input-lg" value= <%= params[:location] %> >
-    <input name="capacity" type="integer" class="form-control input-lg" value= <%= params[:capacity] %> >
-    <input type="submit" class="btn btn-primary btn-lg" value="Search">
-  </form>
+  <%= render 'search_form_index' %>
   <% if @boats== [] %>
     <div class="row">
       <div class="col-xs-12 no-results">
