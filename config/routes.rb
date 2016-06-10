@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     resources :availabilities
     resources :bookings
+    resources :reviews, only: [:new, :create, :show]
   end
 
   get '/bookings/', to: 'bookings#bookings_user'
