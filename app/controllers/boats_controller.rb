@@ -64,7 +64,6 @@ class BoatsController < ApplicationController
     else
       flash[:alert] = "Boat not created!"
     end
-
   end
 
   def edit
