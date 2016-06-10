@@ -59,28 +59,32 @@
   .wday-6 {}
 
   .past {
-    background: #F1F1F1
+    background: $gray-lighter;
   }
-  .future {}
+  .future {
+      background: $gray-lighter;
+  }
 
   .start-date {
-    background: #469AE0
+      background: $gray-lighter;
   }
 
   .today {
-    background: #ABDA5B
+    background: $gray-lighter;
   }
 
 
   .prev-month {
-    background: #F1F1F1;
+    background: $gray-lighter;
   }
   .next-month {
-    background: #DDD;
+      background: $gray-lighter;
   }
-  .current-month {}
+  .current-month {
+      background: $gray-lighter;
+  }
 
   .has-events {
-    background: #469AE0
+    background: $blue-green;
   }
 }
