@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608094302) do
+ActiveRecord::Schema.define(version: 20160610131105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20160608094302) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "price"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "price"
   end
 
   add_index "boats", ["user_id"], name: "index_boats_on_user_id", using: :btree
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20160608094302) do
 
   add_index "bookings", ["boat_id"], name: "index_bookings_on_boat_id", using: :btree
   add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "boat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "content"
+  end
+
+  add_index "reviews", ["boat_id"], name: "index_reviews_on_boat_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -86,4 +95,5 @@ ActiveRecord::Schema.define(version: 20160608094302) do
   add_foreign_key "boats", "users"
   add_foreign_key "bookings", "boats"
   add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "boats"
 end
