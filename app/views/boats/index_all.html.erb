@@ -7,30 +7,62 @@
     <input name="capacity" type="integer" class="form-control input-lg" value= <%= params[:capacity] %> >
     <input type="submit" class="btn btn-primary btn-lg" value="Search">
   </form>
-    <h2 class="text-center">My selection</h2>
+  <% if @boats== [] %>
     <div class="row">
-      <% @boats.each do |boat| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path boat.boat_picture %>');">
-            <div class="card-category"><%= boat.location %></div>
-            <div class="card-description">
-              <h2><%= link_to boat.name%></h2>
-              <p><%= boat.capacity %> persons</p>
-              <p><%= boat.price %>€/night</p>
-            </div>
-            <%= image_tag boat.user.profile_picture, class:"card-user avatar avatar-large" %>
-            <%= link_to "", boat_path(boat), class:"card-link" %>
-          </div>
-        </div>
-      <% end %>
+      <div class="col-xs-12 no-results">
+        <p> Sorry, no boat matches your search. We suggest you extend your possibilities and discover our boats below. </p>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+        <% Boat.all.each do |boat| %>
+          <div class="col-xs-12 col-md-6">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path boat.boat_picture %>');">
+              <div class="card-category"><%= boat.location %></div>
+              <div class="card-description">
+                <h2><%= link_to boat.name%></h2>
+                <p><%= boat.capacity %> persons</p>
+                <p><%= boat.price %>€/night</p>
+              </div>
+              <%= image_tag boat.user.profile_picture, class:"card-user avatar avatar-large" %>
+              <%= link_to "", boat_path(boat), class:"card-link" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div id="map" style="width: 100%; height: 400px;"></div>
+      </div>
+    </div>
+  <% else %>
+    <div class="row page-results">
+      <div class="col-xs-12 col-md-6">
+        <% @boats.each do |boat| %>
+          <div class="col-xs-12 col-md-6">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path boat.boat_picture %>');">
+              <div class="card-category"><%= boat.location %></div>
+              <div class="card-description">
+                <h2><%= link_to boat.name%></h2>
+                <p><%= boat.capacity %> persons</p>
+                <p><%= boat.price %>€/night</p>
+              </div>
+              <%= image_tag boat.user.profile_picture, class:"card-user avatar avatar-large" %>
+              <%= link_to "", boat_path(boat), class:"card-link" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <div id="map" style="width: 100%; height: 400px;"></div>
+      </div>
+    </div>
+  <% end %>
     <% if current_user && current_user.is_admin %>
       <%= link_to "Add a boat", new_boat_path, class:"btn btn-primary" %>
     <% end %>
   </div>
 </div>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
